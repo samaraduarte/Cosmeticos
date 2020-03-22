@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Minha loja</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" href="favicon.png" type="imagem" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">MINHA LOJA</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#">Perfumaria</a></li>
+            <li><a href="#">Maquiagem</a></li>
+            <li><a href="#">Cabelos</a></li>
+            <li><a href="#">Infantil</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="carrinho"><a href="#"><span class="glyphicon glyphicon-shopping-cart" ></span> Carrinho</a></li>
+          </ul>
+        </div>
+      </nav>     
+    <div class="container">
+      <div class="row">
+          <div id="json_aqui"></div>
+      </div>
+    </div>
+
+    <script type="javascript" src='product.json'></script>
+
+    <script>
+      
+        function loadJSON(callback){
+
+          var xobj = new XMLHttpRequest();
+          xobj.overrideMimeType("application/json");
+          xobj.open('GET', 'https://raw.githubusercontent.com/samaraduarte/Cosmeticos/master/OBoticario/product.json', true);
+          xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+
+                  var data_array = JSON.parse(xobj.responseText)
+
+                    var txt = '';
+
+                    for(index in data_array){
+                      txt +=  '<div class="col-sm-4" id="caixa"><h4>'+data_array[index].name
+                      +'</h4><p><img width="100" src="'+data_array[index].images[0].imageUrl
+                      +'"></p><h4 id="valor">R$ '+data_array[index].Value+'</h4></div>'
+                    }
+
+                    document.getElementById('json_aqui').innerHTML = txt;
+                  
+                  console.log(data_array)
+                 
+                }
+          };
+          xobj.send(null);
+        }
+        loadJSON()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    font-family: sans-serif;
+    background-color: #f5f8fd;
+  }
+
+  .container {
+    display: flex;  
+    justify-content: center;
+  
+  }
+  #caixa{
+    border-color: white;
+    border-radius: 5%;
+    background-color: white;
+    padding: 1.5%;
+    border-style: solid;
+    margin: 3%;
+    width: 230px;
+    height: 250px;  
+
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+#caixa:hover{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+}
+  h4{
+    text-align: center;
+  }
+  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #valor{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -50px;
+    width: 100px;
+    
+  }
+  
